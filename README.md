@@ -3,7 +3,9 @@
 pip3 freeze > requirements.txt
 
 # docker_best_practices
-
+For node:
+https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+For python:
 https://testdriven.io/blog/docker-best-practices/
 
 docker image build -t flask_docker .

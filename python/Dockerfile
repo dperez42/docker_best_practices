@@ -19,7 +19,6 @@ RUN pip3 install -r requirements.txt
 
 COPY example.py ./
 
-
 ## Use Unprivileged Containers
 RUN addgroup --system app && adduser --system --group app
 
