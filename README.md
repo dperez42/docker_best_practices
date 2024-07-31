@@ -376,3 +376,118 @@ Decrease the size of the Docker image
 Speed up the build process
 Prevent unnecessary cache invalidation
 Prevent leaking secrets
+
+
+# SECURITY
+
+## Ensuring secure Container Images
+
+The first step in securing your containers is to ensure that the images you use are secure. Container images are the building blocks of your containers. They contain the code, runtime, system libraries, and settings that your application needs to run.
+
+When creating container images, ensure that they are free from vulnerabilities. Avoid using images from untrusted sources—use images from trusted repositories or create your own. Regularly update your images to incorporate the latest security patches and updates.
+
+Additionally, employ image scanning tools to detect and fix vulnerabilities in your container images. These tools can identify common security flaws in your images, helping you to take corrective measures before deploying your containers.
+## Limit Container Privileges
+
+The principle of least privilege (PoLP) is a key security practice that is broadly applicable, and especially important for containers. This principle implies that a container should only have the minimum privileges it needs to perform its function.
+
+Limiting container privileges reduces the risk of exploitation. If a container is compromised, an attacker would only have access to the privileges assigned to that container, limiting the potential damage.
+
+To limit container privileges, avoid running containers as root unless necessary. Use user namespaces to isolate the privileges of containers. Implement security contexts to control the access and capabilities of containers.
+
+## Implement Access Controls
+Access control is another crucial aspect of container security. Effective access control measures ensure that only authorized users can access your containers and data.
+
+When using container orchestration tools like Kubernetes, implement role-based access control (RBAC) to manage user permissions. RBAC allows you to assign roles to users and define what actions they can perform on your containers.
+
+Also, use secrets management tools to securely store and manage sensitive data such as passwords, API keys, and tokens. These tools encrypt your secrets and provide them to your containers when needed, keeping them safe from unauthorized access.
+Securing Container Runtime
+Securing the container runtime is a vital practice to ensure the safety of your containers while they are running. The container runtime is the environment in which your containers operate.
+
+Monitor your containers in real-time to detect any suspicious activities. Use tools that can provide visibility into the operations of your containers, allowing you to identify and respond to threats promptly.
+
+Apply runtime security policies to define what actions containers can perform at runtime. These policies can prevent containers from performing dangerous actions, providing an additional layer of protection.
+
+##  Segregate Container Networks
+Containers on the same network can communicate with each other, which could pose a risk if one container gets compromised. Thus, isolating your container networks and limiting inter-container communication can help prevent the spread of threats within the network.
+
+To segregate your container networks, use network namespaces to create separate virtual networks for your containers. Implement network policies to control the communication between containers on different networks.
+
+Use firewalls to block unwanted traffic to your containers. Firewalls can prevent unauthorized access to your containers, enhancing their security.
+
+##  Automate Vulnerability Scanning and Management
+The next best practice is to automate vulnerability scanning and management. Manual checks can be tedious, time-consuming, and prone to human error. It’s easy to miss a vulnerability that could potentially compromise your entire system.
+
+Automating vulnerability scanning and management allows you to regularly and accurately check for potential vulnerabilities in your container images. It makes it easier to identify and fix issues before they become a significant threat. Automated tools can scan container images at every stage of the development lifecycle, from creation to deployment, ensuring that no vulnerabilities are overlooked.
+
+Automated vulnerability management simplifies the process of patching and updating your systems. It continuously checks for new vulnerabilities and applies patches as soon as they become available, reducing the time window during which your system is exposed to potential threats.
+
+## Regularly Audit Container Environments
+Regular audits help you keep track of all activities within your container environment. They allow you to detect any unusual behavior or anomalies that could indicate a security breach.
+
+Security audits provide you with a clear and comprehensive view of your container environment. They help identify weak spots in your security setup and highlight areas that need improvement. Regular audits also ensure that all security measures are functioning as expected and that all security policies are being enforced.
+
+When implementing regular audits,  you identify potential threats and help maintain compliance with various regulatory standards. By keeping a record of all activities, you can easily provide evidence of compliance during regulatory audits.
+
+8. Reduce the Attack Surface
+Reducing the attack surface involves minimizing the number of components, configurations, and network access points that are susceptible to attacks. The goal is to lessen the avenues through which an attacker can gain unauthorized access to your containers or container environment.
+
+One way to reduce the attack surface is to remove unnecessary software, libraries, and services from your container images. Any component that is not essential for the functioning of your application represents a potential security risk. By trimming down your container images, you not only make your application more secure but also improve its performance.
+
+Finally, employ the least functionality principle, which dictates that you should disable any system functionalities or features that are not required for your container to run its tasks. For example, if your container doesn’t need to initiate outgoing network connections, block that capability at the container runtime level.
+
+9. Update and Patch Systems Regularly
+Outdated systems and software often have known vulnerabilities that attackers can exploit. By keeping your systems up to date, you can protect yourself from these threats.
+
+Containers typically cannot be updated directly, because they are immutable. To update a container, you update its container image and redeploy it. However, the underlying machines running your containers, and any integrated systems, need to be regularly patched and updated to keep them secure.
+
+10. Securing Registries
+Container registries are where your container images are stored and distributed. If an attacker gains access to your registry, they could potentially tamper with your images, leading to serious security breaches.
+
+Securing your registries involves several measures. You should ensure that your registries are protected with strong authentication mechanisms. Only authorized users should be able to access and modify the images in your registry.
+
+You should also regularly audit your registries to detect any unusual activity or potential security risks. If any anomalies are detected, investigate them immediately and take corrective action.
+
+Holistic Container Security with Aqua
+
+Aqua provides a Cloud Native Application Protection Platform (CNAPP) that secures cloud native, serverless, and container technologies. Aqua offers end-to-end security for containerized applications, and protects you throughout the full lifecycle of your DevOps pipeline: from code and build, across infrastructure, and through to runtime controls, container-level firewalls, audit, and compliance.
+
+Continuous Image Assurance
+
+Aqua scans container images for malware, vulnerabilities, embedded secrets, configuration issues and OSS licensing. You can develop policies that outline, for example, which images can run on your container hosts. Aqua’s vulnerability database, founded on a continuously updated data stream, is aggregated from several sources and consolidated to make sure only the latest data is used, promoting accuracy and limiting false positives and negligible CVEs.
+
+Aqua offers Trivy, an all-in one open source security scanner, which now provides multiple capabilities:
+
+Scanning IaC templates for security vulnerabilities
+Kubernetes operator that can automatically trigger scans in response to changes to cluster state
+Automated generation of software bills of materials (SBOMs)
+Detection of sensitive data like hard-coded secrets in code and containers
+Docker Desktop integration making it possible to scan container images directly from Docker Dashboard
+Aqua DTA
+
+Solutions like Aqua’s Dynamic Threat Analysis allow protection against advanced and evasive security threats, including supply chain attacks. The industry’s first container sandbox solution, Aqua DTA dynamically assesses the risks of container images by running them in an isolated sandbox to monitor runtime behavior before they hit the production environment.
+
+Runtime Security for Containers
+
+Aqua protects containerized applications at runtime, ensuring container immutability and prohibiting changes to running containers, isolating the container from the host via custom machine-learned SECCOMP profiles. It also ensures least privileges for files, executables and OS resources using a machine-learned behavioral profile, and manages network connections with a container firewall.
+
+Enforce Immutability
+
+To enforce immutability of container workloads, Aqua enables drift prevention at runtime. This capability deterministically prohibits any changes to the image after it is instantiated into a container. By identifying and blocking anomalous behavior in running containers, Aqua helps ensure that your workloads are protected from runtime attacks, zero-day exploits, and internal threats.
+
+Aqua further enhances securing containers as follows:
+
+Event logging and reporting—granular audit trails of access activity, scan container commands, events, and coverage, container activity, system events, and secrets activity.
+CIS certified benchmark checks—assess node configuration against container runtime and K8s CIS benchmarks with scheduled reporting and testing or Aqua OSS tools.
+Global compliance templates—pre-defined compliance policies meet security standards such as HIPPA, CIS, PCI, and NIST.
+Full user accountability—uses granular user accountability and monitored super-user permissions.
+“Thin OS” host compliance—monitor and scan host for malware, vulnerabilities, login activity, and to identify scan images kept on hosts.
+Compliance enforcement controls—only images and workloads that pass compliance checks can run in your environment.
+Container Firewall
+
+Aqua’s container firewall lets you visualize network connections, develop rules based on application services, and map legitimate connections automatically. Only whitelisted connections will be allowed, both within a container cluster, and also between clusters.
+
+Secrets Management
+
+Store your credentials as secrets, don’t leave them in your source code. Aqua securely transfers secrets to containers at runtime, encrypted at rest and in transit, and places them in memory with no persistence on disk, so they are only visible to the relevant container. Integrate Aqua’s solution with your current enterprise vault, including CyberArk, Hashicorp, AWS KMS or Azure Vault. You can revoke, update, and rotate secrets without restarting containers.
+Learn more about Aqua Container Security
